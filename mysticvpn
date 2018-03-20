@@ -3,6 +3,7 @@
 # Original script by fornesia, rzengineer and fawzya
 # Mod by Bustami Arifin
 # Translation by _Dreyannz_
+# Edited by MysticVPN
 # ==================================================
 
 # Initializing Var
@@ -11,14 +12,14 @@ OS=`uname -m`;
 MYIP=$(wget -qO- ipv4.icanhazip.com);
 MYIP2="s/xxxxxxxxx/$MYIP/g";
 
-# Details of _Dreyannz_
+# Details of MysticVPN
 country=PH
 state=Manila
 locality=Manila
-organization=CoffeeWorks
-organizationalunit=CoffeeWorks
-commonname=CoffeeWorks
-email=dreyannzoctat@gmail.com
+organization=MysticVPN
+organizationalunit=MysticVPN
+commonname=MysticVPN
+email=mysticvpn@gmail.com
 
 # go to root
 cd
@@ -65,6 +66,7 @@ echo 'echo -e ""' >> .bashrc
 echo 'echo -e "Welcome to $HOSTNAME" server' >> .bashrc
 echo 'echo -e "Script Mod by Bustami Arifin"' >> .bashrc
 echo 'echo -e "Translation by _Dreyannz_"' >> .bashrc
+echo 'echo -e "Edited by MysticVPN"' >> .bashrc
 echo 'echo -e "For Commands, input menu"' >> .bashrc
 echo 'echo -e ""' >> .bashrc
 
@@ -117,6 +119,8 @@ cd
 apt-get -y install webmin
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 service webmin restart
+
+END
 
 # install fail2ban
 apt-get -y install fail2ban;
@@ -229,6 +233,7 @@ echo ""  | tee -a log-install.txt
 echo "Original Script by Fornesia, Rzengineer & Fawzya"  | tee -a log-install.txt
 echo "Modified by Bustami Arifin"  | tee -a log-install.txt
 echo "Translation by _Dreyannz_"  | tee -a log-install.txt
+echo "Edited by MysticVPN"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
 echo "Installation Logs --> /root/log-install.txt"  | tee -a log-install.txt
 echo ""  | tee -a log-install.txt
