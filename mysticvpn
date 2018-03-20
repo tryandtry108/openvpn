@@ -77,7 +77,7 @@ rm /etc/nginx/sites-available/default
 wget -O /etc/nginx/nginx.conf "http://vira.cf/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by Bustami Arifin</pre>" > /home/vps/public_html/index.html
-echo "<pre>Translation by _Dreyannz_</pre>" > /home/vps/public_html/index.html
+echo "<pre>MysticVPN - https://www.facebook.com/groups/mysticvpn</pre>" > /home/vps/public_html/index.html
 wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/mysticvpn/openvpn/master/vps.conf"
 service nginx restart
 
