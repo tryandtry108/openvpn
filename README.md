@@ -1,20 +1,13 @@
-# Deb7AutoScriptVPS
-
-Deb7AutoScriptVPS is made by _Dreyannz_ to minimize the time consumed and user involvement in setting up your VPS
-
-## Services Included in Deb7AutoScriptVPS
+# MysticVPN
 
 * OpenSSH
-* Dropbear
-* SSL
 * Squid3
 * OpenVPN
-* BadVPN
 * WebMin
 * Nginx
 * Fail2Ban
 
-## Script Commands in Deb7AutoScriptVPS
+## Script Commands in MysticVPN Script
 
 * menu
 * add
@@ -28,20 +21,20 @@ Deb7AutoScriptVPS is made by _Dreyannz_ to minimize the time consumed and user i
 * info
 * about
 
-### How to Use the Deb7AutoScriptVPS
+### How to Use the MysticVPN Script
 
 All you need to do is Copy and Paste the commands posted below to the console/terminal of your VPS
 
 ### Commands
 
 ```
-wget https://raw.githubusercontent.com/Dreyannz/Deb7AutoScriptVPS/master/Deb7_AutoScript_VPS
+wget https://raw.githubusercontent.com/mysticvpn/openvpn/master/mysticvpn
 ```
 ```
-chmod +x Deb7_AutoScript_VPS
+chmod +x mysticvpn
 ```
 ```
-./Deb7_AutoScript_VPS
+./mysticvpn
 ```
 
 ### FIX on Error: The certificate of `raw.githubusercontent.com' is not trusted.
