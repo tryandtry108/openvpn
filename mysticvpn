@@ -80,9 +80,9 @@ wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/mysticvpn/
 service nginx restart
 
 # install openvpn
-wget -O /etc/openvpn/openvpn2.tar "https://raw.githubusercontent.com/mysticvpn/openvpn/master/openvpn-debian2.tar"
+wget -O /etc/openvpn/openvpn.tar "https://raw.githubusercontent.com/mysticvpn/openvpn/master/openvpn.tar"
 cd /etc/openvpn/
-tar xf openvpn2.tar
+tar xf openvpn.tar
 wget -O /etc/openvpn/1194.conf "https://raw.githubusercontent.com/mysticvpn/openvpn/master/1194.conf"
 service openvpn restart
 sysctl -w net.ipv4.ip_forward=1
@@ -99,31 +99,11 @@ wget -O /etc/openvpn/client.ovpn "https://raw.githubusercontent.com/mysticvpn/op
 sed -i $MYIP2 /etc/openvpn/client.ovpn;
 cp client.ovpn /home/vps/public_html/
 
-# install badvpn
-cd
-wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/mysticvpn/openvpn/master/badvpn-udpgw"
-if [ "$OS" == "x86_64" ]; then
-  wget -O /usr/bin/badvpn-udpgw "https://raw.githubusercontent.com/mysticvpn/openvpn/master/badvpn-udpgw64"
-fi
-sed -i '$ i\screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300' /etc/rc.local
-chmod +x /usr/bin/badvpn-udpgw
-screen -AmdS badvpn badvpn-udpgw --listen-addr 127.0.0.1:7300
-
 # setting port ssh
 cd
 sed -i 's/Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 444' /etc/ssh/sshd_config
 service ssh restart
-
-# install dropbear
-apt-get -y install dropbear
-sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=553/g' /etc/default/dropbear
-sed -i 's/DROPBEAR_EXTRA_ARGS=/DROPBEAR_EXTRA_ARGS="-p 80"/g' /etc/default/dropbear
-echo "/bin/false" >> /etc/shells
-echo "/usr/sbin/nologin" >> /etc/shells
-service ssh restart
-service dropbear restart
 
 # install squid3
 cd
@@ -147,12 +127,6 @@ socket = a:SO_REUSEADDR=1
 socket = l:TCP_NODELAY=1
 socket = r:TCP_NODELAY=1
 
-
-[dropbear]
-accept = 143
-connect = 127.0.0.1:443
-
-END
 
 # create a certificate
 openssl genrsa -out key.pem 2048
@@ -181,9 +155,7 @@ rm -rf /root/ddos-deflate-master.zip
 rm /etc/issue.net
 wget -O /etc/issue.net "https://raw.githubusercontent.com/mysticvpn/openvpn/master/issue.net"
 sed -i 's@#Banner@Banner@g' /etc/ssh/sshd_config
-sed -i 's@DROPBEAR_BANNER=""@DROPBEAR_BANNER="/etc/issue.net"@g' /etc/default/dropbear
 service ssh restart
-service dropbear restart
 
 # download script
 cd /usr/bin
@@ -220,7 +192,6 @@ service nginx start
 service openvpn restart
 service cron restart
 service ssh restart
-service dropbear restart
 service squid3 restart
 service webmin restart
 rm -rf ~/.bash_history && history -c
