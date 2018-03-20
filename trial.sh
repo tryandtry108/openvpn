@@ -3,6 +3,7 @@
 #All Trial Accounts last for 1 day
 #Modified by Bustami Arifin
 #Translated by _Dreyannz_
+#Edited by MysticVPN
 
 clear
 echo -e ""
@@ -14,7 +15,7 @@ echo -e "+#+    +#+ +#+        +#+    +#+      +#+   "
 echo -e "#+#    #+# #+#        #+#    #+#     #+#    "
 echo -e "#########  ########## #########      ###    "
 echo -e ""
-echo -e "Deb7AutoScriptVPS by _Dreyannz_"
+echo -e "AutoScript by MysticVPN"
 echo -e ""
 echo -e ""
 
@@ -34,10 +35,8 @@ echo -e "Password        : $Pass\n"
 echo -e ""
 echo -e "Host / IP       : $IP" 
 echo -e "Port OpenSSH    : 22, 444"
-echo -e "Port Dropbear   : 80, 443"
-echo -e "SSL             : 143"
 echo -e "Port Squid      : 3128, 8080, 8000"
-echo -e "Port OpenVPN    : TCP 1194"
+echo -e "Port OpenVPN    : TCP 443"
 echo -e "OpenVPN Config  : http://$IP:81/client.ovpn"
 echo -e ""
 echo -e "==============================="
